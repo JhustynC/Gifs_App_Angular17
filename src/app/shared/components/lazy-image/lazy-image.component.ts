@@ -15,8 +15,9 @@ export class LazyImageComponent {
   }
 
   onLoad() {
-    console.log('Image Load');
-    this._hasLoader = true;
+    setTimeout(() =>{
+      this._hasLoader = true;
+    }, 1000)
   }
 
   ngOnInit() {
