@@ -1,10 +1,11 @@
-export interface IMain {
-  data: IDatum[];
+export interface IGiphySearchResponse {
+  data: IDataGif[];
   meta: Meta;
   pagination: Pagination;
+  patote: string;
 }
 
-export interface IDatum {
+export interface IDataGif {
   type: Type;
   id: string;
   url: string;
