@@ -5,12 +5,13 @@ import { IDataGif } from '../../interfaces/gifs-response-interfaces';
   selector: 'gifs-card',
   templateUrl: './gif-card.component.html',
 })
-export class GifCardComponent  {
+export class GifCardComponent {
   @Input() gif!: IDataGif;
+
 
   ngOnInit() {
     if (!this.gif) {
-      throw new Error('Gif property is undefined')
+      throw new Error('Gif property is undefined');
     }
   }
 }
