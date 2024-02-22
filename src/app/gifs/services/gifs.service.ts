@@ -15,10 +15,28 @@ export class GifsService {
 
   public listGifs: IDataGif[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.loadLocalStorage();
+    this.loadFirstHistoryTag();
+  }
 
   get tagsHistory() {
     return [...this._tagHistory];
+  }
+
+  private searchLocalStorage(): void {
+    localStorage.setItem('history', JSON.stringify(this._tagHistory));
+  }
+
+  private loadLocalStorage(): void {
+    const temporal = localStorage.getItem('history');
+    if (!temporal) return;
+    console.log('Existe un historial');
+    this._tagHistory = JSON.parse(temporal!);
+  }
+
+  private loadFirstHistoryTag(): void {
+    if (this._tagHistory.length > 0) this.searchTag(this._tagHistory[0]);
   }
 
   public searchTag(tag: string): void {
@@ -53,5 +71,6 @@ export class GifsService {
     }
     this._tagHistory.unshift(tag);
     this._tagHistory = this._tagHistory.splice(0, 10);
+    this.searchLocalStorage();
   }
 }
