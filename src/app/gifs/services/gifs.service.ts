@@ -47,7 +47,7 @@ export class GifsService {
     //QueryParameters
     const params = new HttpParams()
       .set('api_key', this._apiKey)
-      .set('limit', '20')
+      .set('limit', '10')
       .set('q', tag);
 
     //Peticion
