@@ -8,6 +8,9 @@ export class LazyImageComponent {
   @Input() public url!: string;
   @Input() public alt: string = '';
 
+
+  public imageLoader: string =  'assets/loader.svg';
+
   private _hasLoader: boolean = false;
 
   get HasLoader(): boolean {
